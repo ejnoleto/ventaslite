@@ -74,3 +74,4 @@ procura o arquivo composer.json para ver a versão do ui e saber se as versões 
 npm install
 npm run dev 
 verifica se foi criado os diretórios public/css e o diretório public/js
+=
