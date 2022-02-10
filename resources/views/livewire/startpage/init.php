@@ -1,4 +1,4 @@
-<div class="row sales layout-top-spacing">
+<div class="row sales layout">
     <div class="col-sm-12">
         <div class="widget widget-chart-one">
             <div class="widget-heading">
@@ -7,8 +7,7 @@
                 </h4>
                 <ul class="tabs tab-pills">
                     <li>
-                        <a href="javascript:void(0)" class="tabmenu bg-dark" data-toggle="modal"
-                            data-target="#theModal">
+                        <a href="javascript:void(0)" class="tabmenu bg-dark" data-toggle="modal" data-target="#">
                             Agregar
                         </a>
                     </li>
@@ -32,29 +31,14 @@
                                 </td>
                                 <td class="text-center">
                                     <span>
-                                        <img src="" alt="Imagem de exemplo" height="70" width="80" class="rounded">
+                                        <img src="" alt="Imagem de exemplo" height="70" srcset="">
                                     </span>
-                                </td>
-                                <td class="text-center">
-                                    <a href="javascript:void()" class="btn btn-dark mtmobilie" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void()" class="btn btn-dark mtmobilie" title="Delete">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    Paginition
                 </div>
             </div>
         </div>
+        </ div>
     </div>
-    Inslude form
-</div>
-<script>
-document.addEventListener('DOMContetLoaded', function() {
-
-});
-</script>
