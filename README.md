@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -75,3 +76,7 @@ npm install
 npm run dev 
 verifica se foi criado os diretórios public/css e o diretório public/js
 =
+=======
+# ventaslite
+ Sistema de Ventas laravel 8 y livewire
+>>>>>>> 14ec8a0d4b14f0a41e103f18c49f58e097bdde7e
