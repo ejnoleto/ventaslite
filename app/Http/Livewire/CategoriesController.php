@@ -8,13 +8,20 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class Categories extends Component
+class CategoriesController extends Component
 {
     use WithFileUploads;
     use WithPagination;
 
     public $name, $search, $image, $selected_id, $pageTitle, $componentName;
     private $pagination = 5;
+
+
+    public function mount()
+    {
+        $this->pageTitle = 'Listado';
+        $this->componentName = 'Categories';
+    }
 
     public function render()
     {

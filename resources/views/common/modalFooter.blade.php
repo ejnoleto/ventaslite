@@ -5,7 +5,7 @@
             CERRAR
         </button>
 
-        @if(selected_id < 1)
+        @if($selected_id < 1)
             <button type="button" wire:click.prevent="Store()" class="btn btn-dark close-modal">
                 GUARDAR
             </button>
