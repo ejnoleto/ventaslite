@@ -29,7 +29,7 @@
                             @foreach ($categories as $category)
                             <tr>
                                 <td>
-                                    <h6>{{ $category ?? ''->name }}</h6>
+                                    <h6>{{ $category->name }}</h6>
                                 </td>
                                 <td class="text-center">
                                     <span>
