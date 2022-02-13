@@ -14,8 +14,12 @@ class CategoriesController extends Component
     use WithPagination;
 
     public $name, $search, $image, $selected_id, $pageTitle, $componentName;
-    private $pagination = 5;
+    private $pagination = 2;
 
+    public function paginationView()
+    {
+        return 'vendor.livewire.bootstrap';
+    }
 
     public function mount()
     {
