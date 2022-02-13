@@ -17,7 +17,7 @@
 
     <link href="{{ asset('assets/css/widgets/modules-widgets.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/forms/theme-checkbox-radio.css') }}" rel="stylesheet" type="text/css" />
-    <script>
+    <style>
         aside{
             display: none !important;
         }
@@ -43,6 +43,6 @@
                 display: block;
             }
         }
-    </script>
+    </style>
 
     @livewireStyles
