@@ -1,4 +1,4 @@
-@include('common.modalHear')
+@include('common.modalHead')
 
 <div class="row">
     <div class="col-sm-12">
@@ -12,23 +12,13 @@
             </div>
             <input type="text" wire:modal.lazy="name" class="form-control" placeholder="ej: Cursos">
         </div>
-        @error('name')
-            <span class="text-danger er">
-                {{ $message }}
-            </span>
-        @enderror
+        @error('name') <span class="text-danger er">{{ $message }}</span> @enderror
     </div>
     <div class="col-smp12 mt-3">
         <div class="form-group custom-file">
             <input type="file" class="custon-file-input form-control" wire:model="image" accept="image/xpng, image/gif, image/jpeg">
-            <label class="custom-file-label">
-                Imagem {{ $image }}
-            </label>
-            @error('image')
-                <span class="text-danger er">
-                    {{ $message }}
-                </span>
-            @enderror
+            <label class="custom-file-label">Imagem {{ $image }}</label>
+            @error('image') <span class="text-danger er"> {{ $message }} </span> @enderror
         </div>
     </div>
 </div>

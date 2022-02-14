@@ -3,12 +3,11 @@
         <div class="widget widget-chart-one">
             <div class="widget-heading">
                 <h4 class="card-title">
-                    <b> {{ $componentName }}| {{ $pageTitle }}</b>
+                    <b> {{ $componentName }} | {{ $pageTitle }}</b>
                 </h4>
                 <ul class="tabs tab-pills">
                     <li>
-                        <a href="javascript:void(0)" class="tabmenu bg-dark" data-toggle="modal"
-                            data-target="#theModal">
+                        <a href="javascript:void(0)" class="tabmenu bg-dark" data-toggle="modal" data-target="#theModal">
                             Agregar
                         </a>
                     </li>
@@ -33,13 +32,14 @@
                                 </td>
                                 <td class="text-center">
                                     <span>
-                                        <img src="{{ asset('storage/categories/'.$category->image) }}" alt="Imagem de exemplo" height="70" width="80" class="rounded">
+                                        <img src="{{ asset('storage/categories/'.$category->image) }}" alt="Imagem de exemplo" height="70" width="80"
+                                        class="rounded">
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <a href="javascript:void(0)"
                                     wire:click="Edit({{ $category->id }})"
-                                    class="btn btn-dark mtmobilie" title="Edit">
+                                    class="btn btn-dark mtmobilie" title="Edit" data-toggle="modal" data-target="#theModal">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round" class="feather feather-edit-3">
@@ -72,37 +72,21 @@
     @include('livewire.category.form')
 </div>
 <script>
-document.addEventListener('DOMContetLoaded', function() {
-    window.livewire.on('category-added',msg =>{
-        $('#theModal').modal('hide');
-        noty(msg)
-    })
-    window.livewire.on('category-updated',msg =>{
-        $('#theModal').modal('hide');
-        noty(msg)
-    })
-    window.livewire.on('category-deleted',msg =>{
-        $('#theModal').modal('hide');
-        noty(msg)
-    })
-    window.livewire.on('hide-modal',msg =>{
-        $('#theModal').modal('hide');
-    })
-    window.livewire.on('show-modal',msg =>{
-        $('#theModal').modal('show');
-    })
-    window.livewire.on('hidden.bs.modal',msg =>{
-        $('.er').modal('display','none');
-    })
-});
+    document.addEventListener('DOMContetLoaded', function() {
+
+        window.livewire.on('show-modal',msg =>{
+            $('#theModal').modal('show');
+        })
+
+    });
 
     function Confirm(id){
         swal({
             title:'CONFIRMAR',
             text: 'CONFIRMA ELEIMINAR REGISTRO?',
             type: 'warning',
-            showCancelButton: 'Cerrar',
-            cancelButtonText: 'Cerrar',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
             cancelButtonColor: '#ffffff',
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#3b3f5c'

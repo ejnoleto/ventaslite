@@ -14,7 +14,7 @@ class CategoriesController extends Component
     use WithPagination;
 
     public $name, $search, $image, $selected_id, $pageTitle, $componentName;
-    private $pagination = 2;
+    private $pagination = 5;
 
     public function paginationView()
     {
@@ -27,6 +27,19 @@ class CategoriesController extends Component
         $this->componentName = 'Categories';
     }
 
+    public function Edit($id)
+    {
+        $record = Category::find($id, ['id', 'name', 'image']);
+        $this->name = $record->name;
+        $this->selected_id = $record->id;
+        $this->image = null;
+        $this->emit('show-modal', 'show modal!');
+    }
+
+    public function resetUi()
+    {
+        # code...
+    }
     public function render()
     {
         if (strlen($this->search) > 0)
