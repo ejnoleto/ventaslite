@@ -36,7 +36,24 @@ class CategoriesController extends Component
         $this->emit('show-modal', 'show modal!');
     }
 
-    public function resetUi()
+    public function Store()
+    {
+        $rules = [
+            'name' => 'required|unique:categories|min:3'
+        ];
+        $messages = [
+            'name.required' => 'Nombre de la categoria es requerido.',
+            'name.unique' => 'Ya existe nobre de la categoria',
+            'name.min' => 'El nobre de la categirie debe tener al menos 3 caracteres'
+        ];
+        $this->validate($rules, $messages);
+
+        $category = Category::create([
+            'name' => $this->name
+        ]);
+    }
+
+    public function resetUI()
     {
         # code...
     }

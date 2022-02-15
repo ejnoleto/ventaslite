@@ -74,8 +74,31 @@
 <script>
     document.addEventListener('DOMContetLoaded', function() {
 
+        window.livewire.on('category-added',msg =>{
+            $('#theModal').modal('hide');
+            noty(msg)
+        })
+
+        window.livewire.on('category-updated',msg =>{
+            $('#theModal').modal('hide');
+            noty(msg)
+        })
+
+        window.livewire.on('category-deleted',msg =>{
+            $('#theModal').modal('hide');
+            noty(msg)
+        })
+
+        window.livewire.on('hide-modal',msg =>{
+            $('#theModal').modal('hide');
+        })
+
         window.livewire.on('show-modal',msg =>{
             $('#theModal').modal('show');
+        })
+
+        window.livewire.on('hidden.bs.modal',msg =>{
+            $('.er').css('display','none');
         })
 
     });
