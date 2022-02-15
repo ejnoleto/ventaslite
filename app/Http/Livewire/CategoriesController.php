@@ -13,8 +13,9 @@ class CategoriesController extends Component
     use WithFileUploads;
     use WithPagination;
 
-    public $name, $search, $image, $selected_id, $pageTitle, $componentName;
-    private $pagination = 5;
+    public $name, $search, $image, $selected_id, $pageTitle, $componentName,
+        $customFileName;
+    private $pagination = 3;
 
     public function paginationView()
     {
@@ -46,16 +47,30 @@ class CategoriesController extends Component
             'name.unique' => 'Ya existe nobre de la categoria',
             'name.min' => 'El nobre de la categirie debe tener al menos 3 caracteres'
         ];
+
         $this->validate($rules, $messages);
 
         $category = Category::create([
             'name' => $this->name
         ]);
+
+        if ($this->image) {
+            $customFileName = uniqid() . '_.' . $this->image->extension();
+            $this->image->storeAs('public/categorias', $customFileName);
+            $category->image = $customFileName;
+            $category->save();
+        }
+
+        $this->resetUI();
+        $this->emit('category-added', 'Categoria Registrada');
     }
 
     public function resetUI()
     {
-        # code...
+        $this->name = '';
+        $this->image = null;
+        $this->search = '';
+        $this->selected_id = 0;
     }
     public function render()
     {
