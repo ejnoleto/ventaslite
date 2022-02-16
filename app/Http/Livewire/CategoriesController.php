@@ -113,11 +113,29 @@ class CategoriesController extends Component
 
             if ($imageName != null) {
                 if (file_exists('storage/categories' . $imageName)) {
-                    unlink('sorage/categories' . $imageName);
+                    unlink('storage/categories' . $imageName);
                 }
             }
         }
         $this->resetUI();
         $this->emit('category-updated', 'Categoria Atualizada');
+    }
+
+
+    protected $listeners = [
+        'deleteRow' => 'Destroy'
+    ];
+
+    public function Destroy(Category $category)
+    {
+        //dd($category);
+        $imageName = $category->image;
+        $category->delete();
+
+        if ($imageName != null) {
+            unlink('storage/categories/' . $imageName);
+        }
+        $this->resetUI();
+        $this->emit('category-deleted', 'Categoria deletada com sucesso.');
     }
 }

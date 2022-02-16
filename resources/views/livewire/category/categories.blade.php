@@ -47,8 +47,9 @@
                                                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                                         </svg>
                                     </a>
+                                    {{ $category->products->count() }}
                                     <a href="javascript:void(0)"
-                                    onclick="Confirm({{ $category->id }})"
+                                    onclick="Confirm('{{ $category->id }}','{{ $category->products->count() }}')"
                                     class="btn btn-dark mtmobilie" title="Delete">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -74,6 +75,10 @@
 <script>
     document.addEventListener('DOMContetLoaded', function() {
 
+        window.livewire.on('show-modal',msg =>{
+            $('#theModal').modal('show');
+        })
+
         window.livewire.on('category-added',msg =>{
             $('#theModal').modal('hide');
             noty(msg)
@@ -84,26 +89,13 @@
             noty(msg)
         })
 
-        window.livewire.on('category-deleted',msg =>{
-            $('#theModal').modal('hide');
-            noty(msg)
-        })
-
-        window.livewire.on('hide-modal',msg =>{
-            $('#theModal').modal('hide');
-        })
-
-        window.livewire.on('show-modal',msg =>{
-            $('#theModal').modal('show');
-        })
-
-        window.livewire.on('hidden.bs.modal',msg =>{
-            $('.er').css('display','none');
-        })
-
     });
 
-    function Confirm(id){
+    function Confirm(id,products){
+        if(products > 0){
+            swal('Essa categoria não pode ser excluída devido haver produtos relacionados.')
+            return;
+        }
         swal({
             title:'CONFIRMAR',
             text: 'CONFIRMA ELEIMINAR REGISTRO?',
@@ -114,8 +106,8 @@
             confirmButtonText: 'Aceptar',
             confirmButtonColor: '#3b3f5c'
         }).then(function(result){
-            if (result.value) {
-                window.livewire.emit('delete.Row',id)
+            if(result.value) {
+                window.livewire.emit('deleteRow',id)
                 swal.close()
             }
         })
