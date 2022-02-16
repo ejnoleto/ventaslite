@@ -15,7 +15,7 @@ class CategoriesController extends Component
 
     public $name, $search, $image, $selected_id, $pageTitle, $componentName,
         $customFileName;
-    private $pagination = 3;
+    private $pagination = 10;
 
     public function paginationView()
     {
@@ -56,7 +56,7 @@ class CategoriesController extends Component
 
         if ($this->image) {
             $customFileName = uniqid() . '_.' . $this->image->extension();
-            $this->image->storeAs('public/categorias', $customFileName);
+            $this->image->storeAs('public/categories/', $customFileName);
             $category->image = $customFileName;
             $category->save();
         }
@@ -82,5 +82,42 @@ class CategoriesController extends Component
         return view('livewire.category.categories', ['categories' => $data])
             ->extends('layouts.theme.app')
             ->section('content');
+    }
+
+    public function Update()
+    {
+        $rules = [
+            'name' => "required|min:3|unique:categories,name,{$this->selected_id}"
+        ];
+
+        $messages = [
+            'name.required' => "Digite o nobre de la categorie.",
+            'name.min' => "O nobre de la categorie deve ter pelo menos 3 caracteres.",
+            'name.unique' => 'O nome digitado já esxiste.'
+        ];
+
+        $this->validate($rules, $messages);
+
+        $category = Category::find($this->selected_id);
+        $category->update([
+            'name' => $this->name
+        ]);
+
+        if ($this->image) {
+            $customFileName = uniqid() . '_.' . $this->image->extension();
+            $this->image->storeAs('public/categories/', $customFileName);
+            $imageName = $category->image;
+
+            $category->image = $customFileName;
+            $category->save();
+
+            if ($imageName != null) {
+                if (file_exists('storage/categories' . $imageName)) {
+                    unlink('sorage/categories' . $imageName);
+                }
+            }
+        }
+        $this->resetUI();
+        $this->emit('category-updated', 'Categoria Atualizada');
     }
 }
