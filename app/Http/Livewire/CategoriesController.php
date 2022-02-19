@@ -128,7 +128,7 @@ class CategoriesController extends Component
 
     public function Destroy(Category $category)
     {
-        //dd($category);
+        dd($category);
         $imageName = $category->image;
         $category->delete();
 
