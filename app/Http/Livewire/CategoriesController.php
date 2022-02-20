@@ -105,7 +105,7 @@ class CategoriesController extends Component
 
         if ($this->image) {
             $customFileName = uniqid() . '_.' . $this->image->extension();
-            $this->image->storeAs('public/categories/', $customFileName);
+            $this->image->storeAs('storage/categories/', $customFileName);
             $imageName = $category->image;
 
             $category->image = $customFileName;
@@ -128,7 +128,6 @@ class CategoriesController extends Component
 
     public function Destroy(Category $category)
     {
-        dd($category);
         $imageName = $category->image;
         $category->delete();
 

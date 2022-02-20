@@ -24,7 +24,7 @@ class Category extends Model
         if (file_exists('storage/categories/' . $this->image)) {
             return $this->image;
         } else {
-            return 'noimage.png';
+            return '../noimage.png';
         }
     }
 }

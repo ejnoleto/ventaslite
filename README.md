@@ -71,12 +71,16 @@ processo de instalação do ui/bootstrap
 composer require laravel/ui
 php artisan ui bootstrap
 php artisan ui bootstrap --auth
-procura o arquivo composer.json para ver a versão do ui e saber se as versões estão compatíveis com o que deseja fazer 
+procura o arquivo composer.json para ver a versão do ui e saber se as versões estão compatíveis com o que deseja fazer
 npm install
-npm run dev 
+npm run dev
 verifica se foi criado os diretórios public/css e o diretório public/js
-=
-=======
+========
+
 # ventaslite
+
  Sistema de Ventas laravel 8 y livewire
 >>>>>>> 14ec8a0d4b14f0a41e103f18c49f58e097bdde7e
+
+comando para criar um diretório e o acesso ao mesmo com o intuíto de salvar imagens
+php artisan storage:link
