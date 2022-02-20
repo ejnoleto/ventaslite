@@ -13,9 +13,15 @@ class CategoriesController extends Component
     use WithFileUploads;
     use WithPagination;
 
-    public $name, $search, $image, $selected_id, $pageTitle, $componentName,
-        $customFileName;
+    public $name, $search, $image, $selected_id,
+        $pageTitle, $componentName, $customFileName;
+
     private $pagination = 10;
+
+    //recebe o valor que vem da função JAVASCRIPT que vai deletar o registro
+    protected $listeners = [
+        'deleteRow' => 'Destroy'
+    ];
 
     public function paginationView()
     {
@@ -106,6 +112,7 @@ class CategoriesController extends Component
 
         if ($this->image) {
             $customFileName = uniqid() . '_.' . $this->image->extension();
+            // não coloca storage aqui pois vai ficar sem salvar a imagem
             $this->image->storeAs('public/categories/', $customFileName);
             $imageName = $category->image;
 
@@ -121,11 +128,6 @@ class CategoriesController extends Component
         $this->resetUI();
         $this->emit('category-updated', 'Categoria Atualizada');
     }
-
-
-    protected $listeners = [
-        'deleteRow' => 'Destroy'
-    ];
 
     public function Destroy(Category $category)
     {
