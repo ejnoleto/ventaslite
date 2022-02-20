@@ -56,6 +56,7 @@ class CategoriesController extends Component
 
         if ($this->image) {
             $customFileName = uniqid() . '_.' . $this->image->extension();
+            // não coloca storage aqui pois vai ficar sem salvar a imagem
             $this->image->storeAs('public/categories/', $customFileName);
             $category->image = $customFileName;
             $category->save();
@@ -105,7 +106,7 @@ class CategoriesController extends Component
 
         if ($this->image) {
             $customFileName = uniqid() . '_.' . $this->image->extension();
-            $this->image->storeAs('storage/categories/', $customFileName);
+            $this->image->storeAs('public/categories/', $customFileName);
             $imageName = $category->image;
 
             $category->image = $customFileName;
