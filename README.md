@@ -84,3 +84,11 @@ verifica se foi criado os diretórios public/css e o diretório public/js
 
 comando para criar um diretório e o acesso ao mesmo com o intuíto de salvar imagens
 php artisan storage:link
+
+limpeza geral de dados em cache
+php artisan config:cache &&
+php artisan route:clear &&  
+php artisan view:clear &&
+php artisan config:clear &&
+php artisan cache:clear &&
+php artisan clear-compiled
